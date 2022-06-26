@@ -26,7 +26,7 @@ async function getQuote() {
     $("#author").text(quotes[randomIndex].author);
     $('#tweet-quote').attr(
         'href',
-        `https://twitter.com/intent/tweet?text="${quotes[randomIndex].text}" By ${quotes[randomIndex].author}`
+        `https://twitter.com/intent/tweet?text="${quotes[randomIndex].text}" by ${quotes[randomIndex].author || "unknown"}`
         );
 };
     
