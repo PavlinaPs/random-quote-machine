@@ -1,24 +1,55 @@
 //https://www.quotes.net/quotes_api.php
 
-async function getQuotesData() {
-    const response = await $.get("https://type.fit/api/quotes");
-    const data = JSON.parse(response);
-    console.log(data[1]);
-    $("#text").text(data[0].text);
-    $("#author").text(data[0].author);
-}   
+//let background = document.getElementById('container');
 
+async function loadQuotesData() {
+    const response = await fetch("https://type.fit/api/quotes");
+    const data = await response.json();
+    return data;
+
+    // try {
+    //     const response = await fetch("https://type.fit/api/quotes");
+    //     console.log(response)
+    //     if(!response.ok) throw Error('Did not receive expected data');
+    //     const data = await response.json();
+    //     quoteData = data;
+    //     console.log(quoteData)
+    //     return quoteData;
+        //console.log(quoteData);
+    //     setItems(listItems);
+    //     setFetchError(null);
+      // } catch (err) {
+     //  console.log(err.message);
+    //   } finally {
+    //     setIsLoading(false)
+    //   }
+//}
+}
+
+let i = 0;
 function getRandomBg() {
-    document.getElementById('container').style.backgroundImage = 'url("https://source.unsplash.com/random/700x500?space,ocean")';
+    $("#container").css('background-image', `url("https://source.unsplash.com/random/700x500?space,ocean=${i}")`);
+    i++;
 }
 
-function getQuote() {
-    return console.log('clicked');
-}
+async function getQuote() {
+    let quotes = {};
+    try {
+        quotes = await loadQuotesData();
+        console.log(quotes)
+        let randomIndex = Math.floor(Math.random() * quotes.length);
+        $("#text").text(quotes[randomIndex].text);
+        $("#author").text(quotes[randomIndex].author);
+    } catch {
+        console.log('Error!')
+    }
+ }
     
 $(document).ready(function() {
-    getQuotesData();
     getRandomBg();
-
-    $('#new-quote').on('click', getQuote);
+    getQuote();
+    $('#new-quote').on('click', () => {
+        getRandomBg();
+        getQuote();
+    })
 });
