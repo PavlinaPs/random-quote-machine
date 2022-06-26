@@ -4,9 +4,21 @@
     font-weight: 400;
 }
 
+@font-face {
+    font-family: 'The Girl Next Door';
+    src: url(../src/fonts/TheGirlNextDoor-Regular.ttf) format("truetype");
+    font-weight: 400;
+}
+
 :root {  
     /* font family */
     --ff-quotes: 'Passion One', 'cursive';
+    --ff-authors: 'The Girl Next Door', 'cursive';
+
+    /* color */
+    --clr-dark-gray: hsl(0, 0%, 13%);
+    --clr-white: hsl(0, 0%, 100%);
+    --clr-black: hsl(0, 0%, 0%);
 }
 
 /* reset */
@@ -25,10 +37,6 @@ img {
     max-width: 100%;
 }
 
-ul {
-    list-style-type: none;
-}
-
 a {
     text-decoration: none;
 }
@@ -39,13 +47,10 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    /* font-family: var(--ff);
-    font-size: var(--fs-normal);
-    font-weight: 500;
-    color: var(--clr-dark-blue); */
-    background-color: var(--clr-white);
+    color: var(--clr-dark-gray);
 }
 
+/* components */
 .quote__bg-container {
     display: flex;
     justify-content: center;
@@ -56,24 +61,30 @@ body {
     background-repeat: no-repeat;
     background-position: center;
     border-radius: 1rem;
-    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.35);
-}
-
-@media(max-width: 50em) {
-    .quote__bg-container {
-        width: 35rem;
-        height: 25rem;
-    }
+    box-shadow: 0 0.5rem 1.5rem hsla(0, 0%, 0%, 0.35);
 }
 
 .quote__container {
     position: relative;
     width: 60%;
     height: 40%;
-    padding: 5rem;
+    padding: 4rem 5rem 3rem;
     background-color: hsla(0, 0%, 100%, 0.9);
     border-radius: 1rem;
-    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.35);
+    box-shadow: 0 0.5rem 1.5rem hsla(0, 0%, 0%, 0.35);
+}
+
+@media(max-width: 50em) {
+    .quote__bg-container {
+        width: 35rem;
+        height: 45rem;
+    }
+
+    .quote__container {
+        width: 80%;
+        height: 60%;
+        padding: 4rem 4rem 3rem;
+    }
 }
 
 @supports(backdrop-filter: blur(1.5rem)) {
@@ -83,40 +94,83 @@ body {
     }
 }
 
-.quote__container::before {
+.quote__container::before,
+.quote__container::after {
     content: '"';
+    position: absolute;
+    height: 10rem;
     font-family: var(--ff-quotes);
     font-size: 22rem;
-    color: white;
-    position: absolute;
+    color: var(--clr-white);
+}
+
+.quote__container::before {
     top: -4rem;
     left: -2rem;
-    height: 10rem;
     transform: rotate(180deg);
 }
 
 .quote__container::after {
-    content: '"';
-    font-family: var(--ff-quotes);
-    font-size: 22rem;
-    color: white;
-    position: absolute;
     bottom: -4rem;
     right: -2rem;
-    height: 10rem;
-    
+}
+
+.quote__text {
+    display: flex;
+    align-items: center;
+    height: 7rem;
+    font-family: var(--ff-quotes);
+    font-size: 1.6rem;
+    color: var(--clr-dark-gray);
+    line-height: 1.5;
+}
+
+.quote__author {
+    font-family: var(--ff-authors);
+    font-size: 1.6rem;
+    color: var(--clr-black);
+    text-align: right;
+}
+
+@media(max-width: 50em) {
+    .quote__text {
+        height: 13rem;
+    }
+
+    .quote__author {
+        margin-top: 0.5rem;
+        margin-bottom: 0.5rem;
+    }
 }
 
 .quote__button {
     position: absolute;
-    bottom: 5rem;
+    bottom: 3rem;
     left: 50%;
     transform: translateX(-50%);
+    padding: 0.5rem 1rem;
 
+    font-family: var(--ff-quotes);
+    font-size: 1.3rem;
+    color: var(--clr-dark-gray);
+    letter-spacing: 0.05rem;
+    text-align: center;
+
+    background-color: transparent;
+    border: none;
+    border-radius: 0.3rem;
+    box-shadow: 0 -0.05rem 0.3rem hsla(0, 0%, 20%, 0.75);
+    cursor: pointer;
 }
 
-.quote__twitter {
-    position: absolute;
-    bottom: 5rem;
-    left: 3rem;
+.twitter-share-button svg {
+    margin-top: 1rem;
+}
+
+.twitter-share-button > svg {
+    transform: scale(1.2);
+}
+
+.twitter-share-button > svg:hover > path {
+    fill: #1DA1F2;
 }
