@@ -1,0 +1,106 @@
+@font-face {
+    font-family: 'Passion One';
+    src: url(./src/fonts/PassionOne-Regular.ttf) format("truetype");
+    font-weight: 400;
+}
+
+:root {  
+    /* font family */
+    --ff-quotes: 'Passion One', 'cursive';
+}
+
+/* reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+img {
+    display: block;
+    max-width: 100%;
+}
+
+ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+/* set-up */
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* font-family: var(--ff);
+    font-size: var(--fs-normal);
+    font-weight: 500;
+    color: var(--clr-dark-blue); */
+    background-color: var(--clr-white);
+}
+
+.quote__bg-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    width: 70rem;
+    height: 50rem;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.35);
+}
+
+@media(max-width: 50em) {
+    .quote__bg-container {
+        width: 35rem;
+        height: 25rem;
+    }
+}
+
+.quote__container {
+    width: 60%;
+    height: 40%;
+    background-color: hsla(0, 0%, 100%, 0.9);
+    border-radius: 1rem;
+    box-shadow: 0 0.5rem 1.5rem rgba(0, 0, 0, 0.35);
+}
+
+@supports(backdrop-filter: blur(1.5rem)) {
+    .quote__container {
+        background: hsla(0, 0%, 100%, 0.5);
+        backdrop-filter: blur(1.5rem);
+    }
+}
+
+.quote__container::before {
+    content: '"';
+    font-family: var(--ff-quotes);
+    font-size: 22rem;
+    color: white;
+    position: absolute;
+    top: -4rem;
+    left: -2rem;
+    height: 10rem;
+    transform: rotate(180deg);
+}
+
+.quote__container::after {
+    content: '"';
+    font-family: var(--ff-quotes);
+    font-size: 22rem;
+    color: white;
+    position: absolute;
+    bottom: -4rem;
+    right: -2rem;
+    height: 10rem;
+    
+}

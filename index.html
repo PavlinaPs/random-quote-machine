@@ -4,27 +4,32 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Front End Development Libraries Project, June 2022">
+    <!-- favicons -->
+    <link rel="apple-touch-icon" sizes="180x180" href="/src/images/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/src/images/favicon_io/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/src/images/favicon_io/favicon-16x16.png">
+    <link rel="manifest" href="/src/images/favicon_io/site.webmanifest">
 
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/css/style.css">
 
     <title>Random Quote Machine | freeCodeCamp Project</title>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="app.js" defer></script>
+    <script src="/js/app.js" defer></script>
 </head>
-<body>
-    <main id="quote-box">
-        <div id="text"></div>
-        <div id="author"></div>
-        <button id="new-quote">New Quote</button>
-        <a id="tweet-quote" href="http://twitter.com/intent/tweet" target="_top">
-            <img src="./images/icon-twitter.svg" alt="share on twitter">
-        </a>
 
+<body>
+    <main class="quote__bg-container" id="container">
+        <blockquote class="quote__container" id="quote-box">
+            <div id="text"></div>
+            <div id="author"></div>
+            <button id="new-quote">New Quote</button>
+            <a id="tweet-quote" href="http://twitter.com/intent/tweet" target="_top">
+                <img src="./src/images/icon-twitter.svg" alt="share on twitter">
+            </a>
+        </blockquote>
     </main>
     
     <script src="https://cdn.freecodecamp.org/testable-projects-fcc/v1/bundle.js"></script>
 </body>
 </html>
-
-<!-- Quotes by Adrien Coquet from NounProject.com -->
